@@ -1,17 +1,17 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcrypt");
-const usuarioModel = require("../models/usuarioModel");
+const instituicaoModel = require("../models/instituicaoModel");
 
 const login = async (req, res) => {
     const {email, senha} = req.body;
 
     try{
 
-        const usuario = await usuarioModel.buscarPorEmail(email);
+        const usuario = await instituicaoModel.buscarPorEmail(email);
 
             if(usuario.rows.length === 0){
                 return res.status(400).json({
-                    mensagem: "Usuário não encontrado!"
+                    mensagem: "Instituição não encontrada!"
                 })
             }
 
