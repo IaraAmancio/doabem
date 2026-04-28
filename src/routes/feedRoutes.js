@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const controller = require("../controllers/ofertaController");
+const controller = require("../controllers/solicitacaoController");
 
 
-router.get("/feed", controller.listarOfertas);
+router.get("/feed", controller.listarSolicitacoes);
 
 
 module.exports = router;
