@@ -11,14 +11,14 @@ const listarInstituicoes = async () => {
                 `);
 }
 
-const criarInstituicao = async (nome, email, endereco, total_abrigados, senhaHash) => {
+const criarInstituicao = async (nome, email, endereco, senhaHash, telefone) => {
     return await pool.query(
                 `
-                    INSERT INTO instituicao (nome, email, endereco, total_abrigados, senha)
+                    INSERT INTO instituicao (nome, email, endereco, senha, telefone)
                     VALUES ($1, $2, $3, $4, $5)
                     RETURNING *
                 `,
-            [nome, email, endereco, total_abrigados, senhaHash]
+            [nome, email, endereco, senhaHash, telefone]
             );
 };
 
