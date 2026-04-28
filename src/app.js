@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const usuarioRoutes = require("./routes/usuarioRoutes");
 const instituicaoRoutes = require("./routes/instituicaoRoutes");
+const SolicitacaoRoutes = require("./routes/solicitacaoRoutes");
 const testRoutes = require("./routes/testRoutes");
 const authRoutes = require("./routes/authRoutes");
 const feedRoutes = require("./routes/feedRoutes");
@@ -19,6 +20,7 @@ app.get('/', (req, res)=>{
 
 app.use(usuarioRoutes);
 app.use(instituicaoRoutes);
+app.use(SolicitacaoRoutes);
 app.use(testRoutes);
 app.use(authRoutes);
 app.use(feedRoutes);
