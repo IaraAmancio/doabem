@@ -19,14 +19,14 @@ const listarSolicitacoes = async () => {
                 `);
 }
 
-const criarSolicitacao = async (nome, email, senhaHash) => {
+const criarSolicitacao = async (instituicao_id, quantidade, item, descricao) => {
     return await pool.query(
                 `
-                    INSERT INTO instituicao (nome, email, senha)
-                    VALUES ($1, $2, $3)
+                    INSERT INTO solicitacao (instituicao_id, quantidade, item, descricao)
+                    VALUES ($1, $2, $3, $4)
                     RETURNING *
                 `,
-            [nome, email, senhaHash]
+            [instituicao_id, quantidade, item, descricao]
             );
 };
 

@@ -22,7 +22,6 @@ const login = async (req, res) => {
                     mensagem: "Senha incorreta!"
                 })
             }
-
             const token = jwt.sign({id: usuario.rows[0].id}, process.env.JWT_SECRET,{
                 expiresIn: "1h"
             });

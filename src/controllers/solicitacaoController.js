@@ -11,7 +11,26 @@ const listarSolicitacoes = async (req, res) => {
     }
 }
 
+const criarSolicitacao = async (req, res) => {
+    try{
+            const {instituicao_id, quantidade, item, descricao} = req.body;
+    
+    
+            const resultado = await solicitacaoModel.criarSolicitacao(instituicao_id, quantidade, item, descricao)
+        
+            res.status(201).json({
+                mensagem: "Solicitação postada com sucesso",
+            });
+        }catch(erro){
+            res.status(500).json({
+                mensagem: "Erro ao postar Solicitação"
+            })
+        }
+}
+
+
 
 module.exports = {
-    listarSolicitacoes
+    listarSolicitacoes,
+    criarSolicitacao
 }
