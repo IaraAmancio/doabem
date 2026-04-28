@@ -7,6 +7,7 @@ const listarSolicitacoes = async () => {
                 SELECT 
                     solicitacao.item,
                     solicitacao.descricao,
+                    solicitacao.status,
                     solicitacao.quantidade,
                     instituicao.nome AS instituicao_nome,
                     instituicao.telefone AS instituicao_telefone,
