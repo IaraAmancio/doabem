@@ -15,7 +15,7 @@ const listarSolicitacoes = async () => {
                 JOIN categoria_item
                 ON solicitacao.categoria_item_id = categoria_item.id
                 JOIN instituicao
-                ON solicitacao.instituicao_item_id = instituicao.id;
+                ON solicitacao.instituicao_id = instituicao.id;
                 `);
 }
 
