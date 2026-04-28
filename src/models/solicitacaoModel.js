@@ -8,7 +8,8 @@ const listarSolicitacoes = async () => {
                     solicitacao.item,
                     solicitacao.descricao,
                     solicitacao.quantidade,
-                    instituicao.nome,
+                    instituicao.nome AS instituicao_nome,
+                    instituicao.telefone AS instituicao_telefone,
                     instituicao.endereco
                 FROM solicitacao
                 JOIN instituicao
