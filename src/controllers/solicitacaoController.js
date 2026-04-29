@@ -13,7 +13,9 @@ const listarSolicitacoes = async (req, res) => {
 
 const criarSolicitacao = async (req, res) => {
     try{
-            const {instituicao_id, quantidade, item, descricao} = req.body;
+            const instituicao_id = req.instituicao.id;
+            const { quantidade, item, descricao } = req.body;
+
         
             const resultado = await solicitacaoModel.criarSolicitacao(instituicao_id, quantidade, item, descricao)
         

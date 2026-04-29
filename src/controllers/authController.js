@@ -7,22 +7,22 @@ const login = async (req, res) => {
 
     try{
 
-        const usuario = await instituicaoModel.buscarPorEmail(email);
+        const instituicao = await instituicaoModel.buscarPorEmail(email);
 
-            if(usuario.rows.length === 0){
+            if(instituicao.rows.length === 0){
                 return res.status(400).json({
                     mensagem: "Instituição não encontrada!"
                 })
             }
 
-            const senhaValida = await bcrypt.compare(senha, usuario.rows[0].senha)
+            const senhaValida = await bcrypt.compare(senha, instituicao.rows[0].senha)
 
             if(!senhaValida){
                 return res.status(400).json({
                     mensagem: "Senha incorreta!"
                 })
             }
-            const token = jwt.sign({id: usuario.rows[0].id}, process.env.JWT_SECRET,{
+            const token = jwt.sign({id: instituicao.rows[0].id}, process.env.JWT_SECRET,{
                 expiresIn: "1h"
             });
             res.json({
