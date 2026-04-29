@@ -45,8 +45,7 @@ const listarSolicitacoesDaInstituicao = async (instituicao_id) => {
 const deletarSolicitacao = async (id) => {
   return await pool.query(
     `
-    DELETE *
-    FROM solicitacao
+    DELETE FROM solicitacao
     WHERE id = $1
     `,
     [id]
