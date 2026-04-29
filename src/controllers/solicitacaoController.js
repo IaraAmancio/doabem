@@ -43,8 +43,23 @@ const listarMinhasSolicitacoes = async (req, res) => {
     }
 };
 
+const deletarSolicitacao = async (req, res) => {
+    try {
+        const { id } = req.params.id;
+
+        const resultado = await solicitacaoModel.deletarSolicitacao(id);
+
+        res.json(resultado.rows);
+    } catch (erro) {
+        res.status(500).json({
+            erro: erro.message
+        });
+    }
+};
+
 module.exports = {
     listarSolicitacoes,
     criarSolicitacao,
-    listarMinhasSolicitacoes
+    listarMinhasSolicitacoes,
+    deletarSolicitacao
 }
