@@ -12,6 +12,11 @@ const instituicaoSchema = Joi.object({
         "string.email": "E-mail deve ser um e-mail válido",
         "any.require": "E-mail é obrigatório" 
     }),
+    endereco: Joi.string().min(5).required().messages({
+    "string.empty": "Endereço é obrigatório",
+    "string.min": "Endereço deve ter no mínimo 5 caracteres",
+    "any.required": "Endereço é obrigatório"
+    }),
     senha: Joi.string().min(6).required().messages({
         "string.base": "Senha deve ser string",
         "string.empty": "Senha é obrigatória",
