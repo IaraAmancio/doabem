@@ -6,7 +6,7 @@ const listarInstituicoes = async () => {
                 `
                 SELECT 
                     instituicao.nome,
-                    instituicao.email
+                    instituicao.email,
                     instituicao.telefone
                 FROM instituicao;
                 `);
