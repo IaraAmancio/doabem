@@ -42,14 +42,14 @@ const listarSolicitacoesDaInstituicao = async (instituicao_id) => {
 };
 
 
-const deletarSolicitacao = async (id) => {
-  return await pool.query(
-    `
-    DELETE FROM solicitacao
-    WHERE id = $1
-    `,
-    [id]
-  );
+const deletarSolicitacao = async (solicitacao_id, instituicao_id) => {
+    return await pool.query(
+        `
+        DELETE FROM solicitacao
+        WHERE id = $1 AND instituicao_id = $2
+        `,
+        [solicitacao_id, instituicao_id]
+    );
 };
 
 module.exports = {

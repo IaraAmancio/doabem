@@ -45,11 +45,24 @@ const listarMinhasSolicitacoes = async (req, res) => {
 
 const deletarSolicitacao = async (req, res) => {
     try {
-        const { id } = req.params.id;
+        const solicitacao_id = req.params.id;
+        const instituicao_id = req.instituicao.id;
 
-        const resultado = await solicitacaoModel.deletarSolicitacao(id);
+        const resultado = await solicitacaoModel.deletarSolicitacao(
+            solicitacao_id,
+            instituicao_id
+        );
 
-        res.json(resultado.rows);
+        if (resultado.rowCount === 0) {
+            return res.status(404).json({
+                mensagem: "Solicitação não encontrada ou não pertence à instituição"
+            });
+        }
+
+        res.json({
+            mensagem: "Solicitação deletada com sucesso"
+        });
+
     } catch (erro) {
         res.status(500).json({
             erro: erro.message
