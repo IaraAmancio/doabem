@@ -30,7 +30,19 @@ const criarSolicitacao = async (instituicao_id, quantidade, item, descricao) => 
 };
 
 
+const listarSolicitacoesDaInstituicao = async (instituicao_id) => {
+  return await pool.query(
+    `
+    SELECT *
+    FROM solicitacao
+    WHERE instituicao_id = $1
+    `,
+    [instituicao_id]
+  );
+};
+
 module.exports = {
     listarSolicitacoes,
-    criarSolicitacao
+    criarSolicitacao,
+    listarSolicitacoesDaInstituicao
 }

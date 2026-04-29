@@ -6,6 +6,7 @@ const autenticarToken = require("../middlewares/autenticarToken");
 
 router.get("/solicitacoes", controller.listarSolicitacoes);
 router.post("/solicitacoes", autenticarToken, controller.criarSolicitacao);
+router.get("/minhas-solicitacoes", autenticarToken, controller.listarMinhasSolicitacoes);
 
 module.exports = router;
 

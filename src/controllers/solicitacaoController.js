@@ -29,8 +29,22 @@ const criarSolicitacao = async (req, res) => {
         }
 }
 
+const listarMinhasSolicitacoes = async (req, res) => {
+    try {
+        const instituicao_id = req.instituicao.id;
+
+        const resultado = await solicitacaoModel.listarSolicitacoesDaInstituicao(instituicao_id);
+
+        res.json(resultado.rows);
+    } catch (erro) {
+        res.status(500).json({
+            erro: erro.message
+        });
+    }
+};
 
 module.exports = {
     listarSolicitacoes,
-    criarSolicitacao
+    criarSolicitacao,
+    listarMinhasSolicitacoes
 }
